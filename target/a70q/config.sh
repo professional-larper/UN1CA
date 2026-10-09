@@ -39,4 +39,4 @@ TARGET_ASSERT_MODEL=(
     "SM-A7050"
     "SM-A705W"
 )
-TARGET_FIRMWARE="SM-A705FN/EUX/A705FNXXU5DXD2"  # Replace EUX/version with your actual region/build
+TARGET_FIRMWARE="SM-A705FN/EUX/12345678"  # Apparently new un1ca requires imei/serial to download the firmware, i think 12345678 will work.
