@@ -19,6 +19,7 @@
 TARGET_NAME="Galaxy A70"
 TARGET_CODENAME="a70q"
 TARGET_HAS_SYSTEM_EXT=false
+TARGET_OS_SINGLE_SYSTEM_IMAGE="qssi"
 # The Galaxy A70's product partition can't fit
 # a debloated product partition. Place it within
 # system instead.
