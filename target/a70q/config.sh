@@ -20,11 +20,22 @@ TARGET_NAME="Galaxy A70"
 TARGET_CODENAME="a70q"
 TARGET_HAS_SYSTEM_EXT=false
 TARGET_OS_SINGLE_SYSTEM_IMAGE="qssi"
+TARGET_PLATFORM="sm6150"
+TARGET_USE_DYNAMIC_PARTITIONS=false
+TARGET_OS_FILE_SYSTEM_TYPE="erofs"
+TARGET_OS_BUILD_SYSTEM_EXT_PARTITION=false
 # The Galaxy A70's product partition can't fit
 # a debloated product partition. Place it within
 # system instead.
 TARGET_HAS_PRODUCT=false
 # There aren't any present target firmwares in config.sh 
 # so you have to add it yourself.
-TARGET_ASSERT_MODEL="SM-A705F,SM-A705FN,SM-A705GM,SM-A705MN,SM-A7050,SM-A705W"
+TARGET_ASSERT_MODEL=(
+    "SM-A705F"
+    "SM-A705FN"
+    "SM-A705GM"
+    "SM-A705MN"
+    "SM-A7050"
+    "SM-A705W"
+)
 TARGET_FIRMWARE="SM-A705FN/EUX/A705FNXXU5DXD2"  # Replace EUX/version with your actual region/build
