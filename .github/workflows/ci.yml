@@ -52,6 +52,8 @@ jobs:
     name: Build
     needs: [shellcheck, generate-matrix]
     runs-on: ubuntu-24.04
+    environment: A70-IMEI
+
 
     strategy:
       fail-fast: false
