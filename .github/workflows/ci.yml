@@ -120,6 +120,12 @@ jobs:
       - name: Build dependencies
         run: ./scripts/build_dependencies.sh
 
+      - name: Configure A70 firmware identifier
+        run: |
+         sed -i "s|^TARGET_FIRMWARE=.*|TARGET_FIRMWARE=\"SM-A705FN/EUX/${A70_IMEI}\"|" target/a70q/config.sh
+         env:
+         A70_IMEI: ${{ secrets.A70_IMEI }}
+
       - name: Download stock firmwares
         uses: nick-fields/retry@v4
         with:
