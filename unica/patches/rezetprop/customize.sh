@@ -35,7 +35,8 @@ fi
     echo ""
 } >> "$WORK_DIR/system/system/etc/init/hw/init.rc"
 
-sed -i 's/${ro.boot.warranty_bit}/0/g' "$WORK_DIR/system/system/etc/init/init.rilcommon.rc" # shellcheck disable=SC2016
+# shellcheck disable=SC2016
+sed -i 's/${ro.boot.warranty_bit}/0/g' "$WORK_DIR/system/system/etc/init/init.rilcommon.rc"
 
 echo "Setting up SEPolicy"
 
