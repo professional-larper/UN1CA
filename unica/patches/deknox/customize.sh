@@ -19,7 +19,7 @@ system/framework/services.jar/smali_classes2/vendor/samsung/hardware/khdm
 
 while IFS= read -r f; do
     [ -z "$f" ] && continue
-    rm -rf -- "$APKTOOL_DIR/$f"
+    rm -rf -- "${APKTOOL_DIR:?APKTOOL_DIR is not set}/$f"
 done <<< "$FTP"
 
 echo "Removing eSE Blobs"
