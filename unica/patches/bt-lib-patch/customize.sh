@@ -7,7 +7,7 @@ if [ ! -f "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" ]; then
 
     mkdir -p "$TMP_DIR/tmp_out"
     sudo mount -o ro "$TMP_DIR/apex_payload.img" "$TMP_DIR/tmp_out"
-    sudo cat "$TMP_DIR/tmp_out/lib64/libbluetooth_jni.so" > "$WORK_DIR/system/system/lib64/libbluetooth_jni.so"
+    sudo tee "$WORK_DIR/system/system/lib64/libbluetooth_jni.so" < "$TMP_DIR/tmp_out/lib64/libbluetooth_jni.so" > /dev/null
 
     sudo umount "$TMP_DIR/tmp_out"
     rm -rf "$TMP_DIR"

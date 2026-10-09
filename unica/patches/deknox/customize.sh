@@ -1,4 +1,3 @@
-
 echo "Decoding resources if not decoded already"
 DECODE_APK "system/framework/services.jar"
 DECODE_APK "system/framework/framework.jar"
@@ -11,13 +10,17 @@ DELETE_FROM_WORK_DIR "system" "system/lib64/vendor.samsung.hardware.tlc.hdm@1.0.
 DELETE_FROM_WORK_DIR "system" "system/lib64/vendor.samsung.hardware.tlc.hdm@1.1.so"
 DELETE_FROM_WORK_DIR "system" "system/lib64/vendor.samsung.hardware.tlc.hdm@1.2.so"
 
+: "${APKTOOL_DIR:?APKTOOL_DIR is not set}"
+
 FTP="
 system/framework/services.jar/smali/com/android/server/enterprise/hdm
 system/framework/services.jar/smali_classes2/vendor/samsung/hardware/khdm
 "
-for f in $FTP; do
-rm -rf "$APKTOOL_DIR/$f"
-done
+
+while IFS= read -r f; do
+    [ -z "$f" ] && continue
+    rm -rf -- "$APKTOOL_DIR/$f"
+done <<< "$FTP"
 
 echo "Removing eSE Blobs"
 
@@ -31,8 +34,8 @@ DELETE_FROM_WORK_DIR "system" "system/lib64/libtlc_blockchain_direct_comm.so"
 DELETE_FROM_WORK_DIR "system" "system/lib64/libtlc_blockchain_keystore.so"
 DELETE_FROM_WORK_DIR "system" "system/lib64/vendor.samsung.hardware.tlc.blockchain-V1-ndk.so"
 
-rm -rf "$APKTOOL_DIR/system/framework/framework.jar/smali_classes6/com/android/server/SemService*.smali"
-rm -rf "$APKTOOL_DIR/system/framework/services.jar/smali_classes6/com/android/server/blockchain"
+rm -rf -- "$APKTOOL_DIR/system/framework/framework.jar/smali_classes6/com/android/server/SemService"*.smali
+rm -rf -- "$APKTOOL_DIR/system/framework/services.jar/smali_classes6/com/android/server/blockchain"
 
 echo "Removing MPOS Blobs"
 
@@ -46,9 +49,11 @@ FTP="
 system/framework/services.jar/smali/com/android/server/enterprise/mpos
 system/framework/services.jar/smali_classes2/vendor/samsung/hardware/mpos
 "
-for f in $FTP; do
-rm -rf "$APKTOOL_DIR/$f"
-done
+
+while IFS= read -r f; do
+    [ -z "$f" ] && continue
+    rm -rf -- "$APKTOOL_DIR/$f"
+done <<< "$FTP"
 
 echo "Adding Donor Components"
 
